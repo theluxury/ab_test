@@ -1,26 +1,25 @@
 <!doctype html>
 <html lang="en" ng-app="abTestApp">
-<head>
-  <meta charset="utf-8">
-  <title>My HTML File</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/app.css">
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="js/controllers.js"></script>
-</head>
-<body ng-controller="ABFieldsCtrl">
-  <center><br>
-    <div class="container">
-      <div class="jumbotron" style="width:90%; height:200px">
-	<h1 style="margin-right:100px; font-size:80px">AB Testing</h1>
-	<img src="img/ab_testing.png" style="height: 200px; float:right; margin-top:-170px">
-      </div>
-      <div id="search" style="width:90%">
-	<ul ng-repeat="field in fields">
-	  <div class="input-block">
+  <head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+  </head>
+  <body ng-controller="ABFieldsCtrl">
+    <center><br>
+      <div class="container">
+	<div class="jumbotron" style="width:90%; height:200px">
+	  <h1 style="margin-right:100px; font-size:80px">AB Testing</h1>
+	  <img src="img/ab_testing.png" style="height: 200px; float:right; margin-top:-170px">
+	</div>
+	<div id="search" style="width:90%">
+	  <div class="input-block" ng-repeat="field in fields">
 	    <p class="input-desc">{{field.key}}</p>
 	    <div class="input-field" ng-if="field.type == 'select'">
-	      <select ng-model="field.value">
+	      <select ng-model="field.value" ng-init="field.value = field.options[0]">
 		<option ng-repeat="option in field.options" value="{{option}}">{{option}}</option>
 	      </select>
 	    </div>
@@ -41,9 +40,9 @@
 	      <input type="{{field.type}}" ng-model="field.value">
 	    </div>
 	  </div> <!-- end input-block -->
-	</ul>
-      </div> <!-- end search -->
-    </div> <!-- end container -->
-  </center>
-</body>
+	  <button class="submit-button btn btn-primary" ng-click="submitForm()">Submit</button>
+	</div> <!-- end search -->
+      </div> <!-- end container -->
+    </center>
+  </body>
 </html>

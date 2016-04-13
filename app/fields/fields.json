@@ -8,6 +8,6 @@
     {"key": "Product", "type": "select", "options": ["CRM", "Inbox", "IQCloud"]},
     {"key": "Owner", "type": "text"},
     {"key": "Email", "type": "email"},
-    {"key": "Treatments Tags", "type": "object", "tags": [{}]},
+    {"key": "Treatment Tags", "type": "object", "tags": [{}]},
     {"key": "Success Tags", "type": "object", "tags": [{}]}
 ]
