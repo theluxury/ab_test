@@ -1,0 +1,13 @@
+[
+    {'key': 'Test Name', 'type': 'text'},
+    {'key': 'Description', 'type': 'block'},
+    {'key': 'Start Date', 'type': 'date'},
+    {'key': 'End Date', 'type': 'date'},
+    {'key': 'Comment', 'type': 'block'},
+    {'key': 'Category', 'type': 'select', 'options': ['Frontend', 'Backend', 'Product', 'Design']},
+    {'key': 'Product', 'type': 'select', 'options': ['CRM', 'Inbox', 'IQCloud']},
+    {'key': 'Owner', 'type': 'text'},
+    {'key': 'Email', 'type': 'email'},
+    {'key': 'Treatments Tags', 'type': 'object', 'tags': [{}]},
+    {'key': 'Success Tags', 'type': 'object', 'tags': [{}]}
+]
