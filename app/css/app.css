@@ -1,0 +1,21 @@
+/* app css stylesheet */
+div.input-block {
+    display:block;
+    clear:left;
+    float:left;
+    margin-bottom:10px;
+}
+
+div.input-field {
+    float:left;
+}
+
+p.input-desc {
+    width:100px;
+    float:left;
+    text-align:left;
+}
+
+#field {
+    margin-bottom:20px;
+}
