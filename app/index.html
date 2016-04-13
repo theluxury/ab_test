@@ -27,7 +27,17 @@
 	    <div class="input-field" ng-if="field.type == 'block'">
 	      <input style="width:300px; height:100px" type="text" ng-model="field.value">
 	    </div>
-	    <div class="input-field" ng-if="field.type != 'select' && field.type != 'block'">
+	    <div class="input-field" ng-if="field.type == 'object'">
+	      <div ng-repeat="tag in field.tags">
+		<input class="treatment-fields" type="text" ng-model="tag.key" placeholder="{{field.key}} Key">
+		<input class="treatment-fields" type="text" ng-model="tag.value" placeholder="{{field.key}} Value">
+	      </div>
+	      <div class="treatment-buttons">
+		<button class="btn btn-primary" ng-click="addNewTag(field.key)">Add another tag</button>
+		<button class="btn btn-warning" ng-click="removeLastTag(field.key)">Remove last tag</button>
+	      </div>
+	    </div>
+	    <div class="input-field" ng-if="field.type != 'select' && field.type != 'block' && field.type != 'object'">
 	      <input type="{{field.type}}" ng-model="field.value">
 	    </div>
 	  </div> <!-- end input-block -->

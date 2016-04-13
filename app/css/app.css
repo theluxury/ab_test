@@ -10,8 +10,17 @@ div.input-field {
     float:left;
 }
 
+div.treatment-buttons {
+    float:left;
+    margin:10px 0px;
+}
+
+input.treatment-fields {
+    margin:0px 5px 5px 0px;
+}
+
 p.input-desc {
-    width:100px;
+    width:120px;
     float:left;
     text-align:left;
 }
