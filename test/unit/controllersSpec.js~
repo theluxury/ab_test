@@ -1,0 +1,35 @@
+'use strict';
+
+/* jasmine specs for controllers go here */
+
+describe('ABFieldsCtrl', function() {
+    var scope, ctrl, $httpBackend;
+    var fieldsJson = [
+	{"key": "Test Name", "type": "text"},
+	{"key": "Description", "type": "block"},
+	{"key": "Start Date", "type": "date"},
+	{"key": "End Date", "type": "date"},
+	{"key": "Comment", "type": "block"},
+	{"key": "Category", "type": "select", "options": ["Frontend", "Backend", "Product", "Design"]},
+	{"key": "Product", "type": "select", "options": ["CRM", "Inbox", "IQCloud"]},
+	{"key": "Owner", "type": "text"},
+	{"key": "Email", "type": "email"},
+	{"key": "Treatment Tags", "type": "object", "tags": [{}]},
+	{"key": "Success Tags", "type": "object", "tags": [{}]}
+    ]
+    
+    beforeEach(module('abTestApp'));
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+	$httpBackend = _$httpBackend_;
+	$httpBackend.expectGET('fields/fields.json').
+	    respond(fieldsJson);
+	
+	scope = $rootScope.$new();
+	ctrl = $controller('ABFieldsCtrl', {$scope: scope});
+    }));
+    
+    it('should create fields with 11 fields', inject(function($controller) {
+	$httpBackend.flush();
+	expect(scope.fields.length).toBe(11);
+    }));
+});

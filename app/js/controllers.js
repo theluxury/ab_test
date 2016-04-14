@@ -9,10 +9,13 @@ abTestApp.controller('ABFieldsCtrl', function ($scope, $http) {
 
     var _TAG_KINDS = ['Treatment Tags', 'Success Tags'];
 
-    var findObject = function(key) {
+    $scope.findObject = function(key) {
 	var objectArray = $scope.fields.filter(function(obj) {
 	    return obj.key == key;
 	});
+	if (objectArray[0] == null) {
+	    throw "Trying to find an object that doesn't exist."
+	}
 	return objectArray[0];
     }
 
@@ -25,19 +28,24 @@ abTestApp.controller('ABFieldsCtrl', function ($scope, $http) {
 	    throw "Trying to push tag onto key that is not Treatment Tags or Success Tags";
 	    return;
 	}
-	var jsonObject = findObject(key);
+	var jsonObject = $scope.findObject(key);
 	jsonObject.tags.push({});
     };
     /**
-     * Removes last field to put information for tags
+     * Removes last field to put information for tags. 
+     * It is required that there is at least 1 tag.
      * @param {String} key, the kind of tag you want to push. Must be either 'Treatment' or 'Success' 
+     *
      */
     $scope.removeLastTag = function(key) {
 	if (_TAG_KINDS.indexOf(key) < 0) {
 	    throw "Trying to push tag onto key that is not Treatment Tags or Success Tags";
 	    return;
 	}
-	var jsonObject = findObject(key);
+	var jsonObject = $scope.findObject(key);
+	if (jsonObject.tags.length <= 1) {
+	    return;
+	}
 	jsonObject.tags.pop();
     }
 
