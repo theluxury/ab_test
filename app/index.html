@@ -26,7 +26,7 @@
 	    <div class="input-field" ng-if="field.type == 'block'">
 	      <input style="width:300px; height:100px" type="text" ng-model="field.value">
 	    </div>
-	    <div class="input-field" ng-if="field.type == 'object'">
+	    <div class="input-field" ng-if="field.type == 'object'" id="{{field.id}}">
 	      <div ng-repeat="tag in field.tags">
 		<input class="treatment-fields" type="text" ng-model="tag.key" placeholder="{{field.key}} Key">
 		<input class="treatment-fields" type="text" ng-model="tag.value" placeholder="{{field.key}} Value">

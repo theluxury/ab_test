@@ -5,8 +5,8 @@
 describe('ABFieldsCtrl', function() {
     var scope, ctrl, $httpBackend;
     var _TAG_KINDS = ['Treatment Tags', 'Success Tags'];
-    var _JSON_RESPONSE = [{"key": "Treatment Tags", "type": "object", "tags": [{}]},
-			  {"key": "Success Tags", "type": "object", "tags": [{}]}];
+    var _JSON_RESPONSE = [{"key": "Treatment Tags", "id": "treatment", "type": "object", "tags": [{}]},
+			  {"key": "Success Tags", "id": "success", "type": "object", "tags": [{}]}]
 
     // Load our app module definition before each test.
     beforeEach(module('abTestApp'));
@@ -44,14 +44,12 @@ describe('ABFieldsCtrl', function() {
 
 	// Now check the other tag
 	expect(scope.findObject(_TAG_KINDS[1]).tags.length).toBe(1);
+	// Make sure it can't go below one
+	scope.removeLastTag(_TAG_KINDS[1]);
+	expect(scope.findObject(_TAG_KINDS[1]).tags.length).toBe(1);
+	// Add one just for funsies.
 	scope.addNewTag(_TAG_KINDS[1]);
 	expect(scope.findObject(_TAG_KINDS[1]).tags.length).toBe(2);
-
-	// Now make sure it can't go below one.
-	scope.removeLastTag(_TAG_KINDS[1]);
-	expect(scope.findObject(_TAG_KINDS[1]).tags.length).toBe(1);
-	scope.removeLastTag(_TAG_KINDS[1]);
-	expect(scope.findObject(_TAG_KINDS[1]).tags.length).toBe(1);
     });
 
     it('should not allow misnamed tags', function() {
